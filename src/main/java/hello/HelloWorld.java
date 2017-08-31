@@ -152,7 +152,7 @@ public class HelloWorld {
                 .sorted()
                 .forEach(System.out::println);
 
-        // Step by step Streams
+        // Step by step Sequential Streams
         Streams streams = new Streams();
 
         streams.Filter();
@@ -161,6 +161,14 @@ public class HelloWorld {
         streams.Matching();
         streams.Counting();
         streams.Reducing();
+
+        //Parallel Streams
+
+        ParallelStreams parallelStreams = new ParallelStreams(1023824);
+
+        parallelStreams.SequentialSorting();
+        parallelStreams.ParallelSorting();
+
 
 
     }
