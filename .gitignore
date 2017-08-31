@@ -1,0 +1,5 @@
+# Idea folders
+.idea/
+*.iml
+# Builds
+build/
