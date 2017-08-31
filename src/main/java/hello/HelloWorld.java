@@ -141,7 +141,7 @@ public class HelloWorld {
         optional.ifPresent((s) -> System.out.println(s.charAt(0))); // "b"
 
         // Streams
-        System.out.println("Streams");
+        System.out.println("Basic Streams");
         List<String> myList =
                 Arrays.asList("a1", "a2", "b1", "c2", "c3", "c1");
 
@@ -151,5 +151,17 @@ public class HelloWorld {
                 .map(String::toUpperCase)
                 .sorted()
                 .forEach(System.out::println);
+
+        // Step by step Streams
+        Streams streams = new Streams();
+
+        streams.Filter();
+        streams.Sorted();
+        streams.Mapping();
+        streams.Matching();
+        streams.Counting();
+        streams.Reducing();
+
+
     }
 }
