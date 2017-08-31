@@ -8,7 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class HelloWorld {
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         // Hello World
         LocalTime currentTime = new LocalTime();
         System.out.println("The current local time is: " + currentTime);
@@ -46,16 +46,22 @@ public class HelloWorld {
         Integer converted = converter.convert("123");
         System.out.println("Functional Interface converted value: " + converted);
 
-        // Method References
+        // Method References - Static
         Converter<String, Integer> converter1 = Integer::valueOf;
         Integer converted1 = converter1.convert("321");
         System.out.println("Method Reference with Functional Interface converted value: " + converted1);
 
-        // Constructor References
+        // Method References - Object
         Something something = new Something();
         Converter<String, String> converter2 = something::startsWith;
         String converted2 = converter2.convert("Java");
         System.out.println("Java starts with: " + converted2);
+
+        // Constructor References
+        PersonFactory<Person> personFactory = Person::new;
+        Person person = personFactory.create("Peter", "Parker");
+
+        System.out.println(person.getWholeName());
 
 
     }
