@@ -1,10 +1,13 @@
 package hello;
 
 public class Person {
-    String firstName;
-    String lastName;
+    private String firstName;
+    private String lastName;
 
-    Person() {}
+    Person() {
+        firstName = "John";
+        lastName = "Default";
+    }
 
     Person(String firstName, String lastName) {
         this.firstName = firstName;
@@ -22,4 +25,6 @@ public class Person {
     public String getWholeName(){
         return firstName + " " + lastName;
     }
+
+    public void setFirstName(String firstName){ this.firstName = firstName; }
 }
