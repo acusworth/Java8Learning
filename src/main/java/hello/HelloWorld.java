@@ -1,7 +1,11 @@
 package hello;
 
-import org.joda.time.LocalTime;
 
+import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -11,9 +15,6 @@ import java.util.function.Supplier;
 public class HelloWorld {
     public static void main(String[] args) {
         // Hello World
-        LocalTime currentTime = new LocalTime();
-        System.out.println("The current local time is: " + currentTime);
-
         Greeter greeter = new Greeter();
         System.out.println(greeter.sayHello());
 
@@ -162,12 +163,61 @@ public class HelloWorld {
         streams.Counting();
         streams.Reducing();
 
-        //Parallel Streams
+        // Parallel Streams
 
         ParallelStreams parallelStreams = new ParallelStreams(1023824);
 
         parallelStreams.SequentialSorting();
         parallelStreams.ParallelSorting();
+
+        // Mapping
+
+        Mapping mapping = new Mapping();
+
+        mapping.PrintMap();
+        mapping.ComputeMap();
+        mapping.RemoveFromMap();
+        mapping.GetDefaultMap();
+        mapping.MapMerge();
+
+        // Date API
+
+        Clock clock = Clock.systemDefaultZone(); // Clocks are aware of time zones!!
+        long millis = clock.millis(); // Used instead of System.currentTimeMillis()
+
+        System.out.println("Aprox Current time in milliseconds: " + millis);
+
+        Instant instant = clock.instant(); // Instantaneous point in time
+        Date legacyDate = Date.from(instant); // Legacy date code in java.util.Date
+
+        System.out.println("Legacy Date/Time: " + legacyDate);
+
+        // Timezones
+
+        System.out.println(ZoneId.getAvailableZoneIds()); // Prints all avail time zones
+
+        ZoneId zone1 = ZoneId.of("Europe/Berlin");
+        ZoneId zone2 = ZoneId.of("Brazil/East");
+
+        System.out.println(zone1.getRules());
+        System.out.println(zone2.getRules());
+
+        LocalTime now1 = LocalTime.now(zone1);
+        LocalTime now2 = LocalTime.now(zone2);
+
+        System.out.println("Is Berlin before Brazil East: " + now1.isBefore(now2)); // False, duh!
+
+        long hoursBetween = ChronoUnit.HOURS.between(now1, now2);
+        long minutesBetween = ChronoUnit.MINUTES.between(now1, now2);
+
+        System.out.println("Time between Berlin and Eastern Brazil in hours: " + hoursBetween);
+        System.out.println("Time between Berlin and Eastern Brazil in minutes: " + minutesBetween);
+
+
+
+
+
+
 
 
 

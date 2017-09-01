@@ -47,5 +47,4 @@ public class ParallelStreams {
         System.out.println(String.format("Parallel sort took: %d ms", millis));
     }
 
-
 }
