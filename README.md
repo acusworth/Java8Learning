@@ -12,10 +12,17 @@ The more comprehensive stream example in the main Java 8 tutorial can be found i
 
 ## How to Run
 
-Currently the gradle project isn't setup correctly.
+The there two ways to execute this work. Debug way and Gradle.
 
-To run you must execute the HelloWorld Class, like so:
+To use Gradle:
+
+There are two tasks:
+- `gradle build` to generate the class files
+- `gradle run` to execute the main class
+
+To debug you must execute the HelloWorld Class, like so:
 
 1. Open the project into InteliJ IDEA or Eclipse.
 2. Locate the HelloWorld Class under src/main/java/hello.
-3. Right click on the HelloWorld Class and Run the main function.
+3. Create a breakpoint somewhere in the main function to stop at.
+4. Right click on the HelloWorld Class and Debug the main function.

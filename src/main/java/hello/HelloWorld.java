@@ -135,9 +135,9 @@ public class HelloWorld {
         System.out.println("Optionals");
         Optional<String> optional = Optional.of("bam");
 
-        optional.isPresent(); // True
-        optional.get(); // "bam"
-        optional.orElse("fallback"); // "bam"
+        System.out.println("The optional is present: " + optional.isPresent()); // True
+        System.out.println("Get Optional: " + optional.get()); // "bam"
+        System.out.println("Get Optional with fallback: " + optional.orElse("fallback")); // "bam"
 
         optional.ifPresent((s) -> System.out.println(s.charAt(0))); // "b"
 
