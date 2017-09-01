@@ -1,10 +1,10 @@
 package hello;
 
 
-import java.time.Clock;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.LocalTime;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.function.Consumer;
@@ -213,9 +213,65 @@ public class HelloWorld {
         System.out.println("Time between Berlin and Eastern Brazil in hours: " + hoursBetween);
         System.out.println("Time between Berlin and Eastern Brazil in minutes: " + minutesBetween);
 
+        LocalTime late = LocalTime.of(23, 59, 59); // Can set your own time variable
+        System.out.println("Its late in the day when its: " + late);
+
+        // Formatting time for locale. Mostly needed for display purposes.
+        DateTimeFormatter germanFormatter =
+                DateTimeFormatter
+                    .ofLocalizedTime(FormatStyle.SHORT)
+                    .withLocale(Locale.GERMAN);
+
+        LocalTime leetTime = LocalTime.parse("13:37", germanFormatter);
+        System.out.println("When its 1:37 PM in Germany, its: " + leetTime);
+
+        // Dates
+
+        LocalDate today = LocalDate.now();
+        LocalDate tomorrow = today.plus(1, ChronoUnit.DAYS);
+        LocalDate yesterday = tomorrow.minusDays(2); // Note normally you'd take today minus 1 day but the example is to show the minusDays function.
+
+        LocalDate independenceDay = LocalDate.of(2018, Month.JULY, 4);
+        DayOfWeek dayOfWeek = independenceDay.getDayOfWeek();
+        System.out.println("US Independence Day in 2018 is on a " + dayOfWeek);
+
+        // Date-Time
+
+        LocalDateTime sylvester = LocalDateTime.of(2018, Month.DECEMBER, 31, 23, 59, 59);
+
+        DayOfWeek dayOfWeek1 = sylvester.getDayOfWeek();
+        System.out.println("The last day of 2018 will be a " + dayOfWeek1);
+
+        Month month = sylvester.getMonth();
+        System.out.println("The last month of the year is " + month);
+
+        long minuteOfDay = sylvester.getLong(ChronoField.MINUTE_OF_DAY);
+        System.out.println("The last minute of the last day of the year is " + minuteOfDay);
+
+        // Converting date formats
+        Instant instant1 = sylvester
+                .atZone(ZoneId.systemDefault())
+                .toInstant(); // Date-time can be converted to instant with the addition of a timezone
+
+        Date legacyDate1 = Date.from(instant1); // Instants can be converted to legacy dates.
+
+        System.out.println("The last moment of 2018 is " + legacyDate1);
 
 
+        DateTimeFormatter formatter =
+                DateTimeFormatter
+                    .ofPattern("MMM dd, yyyy - HH:mm");
 
+        LocalDateTime parsed = LocalDateTime.parse("Nov 03, 2018 - 07:13", formatter); // Converting a string into date-time
+        String string = formatter.format(parsed); // Converting the date-time into a string
+        System.out.println("It is a " + parsed.getDayOfWeek() + " on " + parsed.toString()); // Notice how the parsed to string is not the same as the formatted string?
+        System.out.println("String parsed Date-Time: " + string);
+
+
+        //TODO: Annotations
+        //Annotations annotations = new Annotations();
+
+        //annotations.getAnnotationsByTypes();
 
 
 
