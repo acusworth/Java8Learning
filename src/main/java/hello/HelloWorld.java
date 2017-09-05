@@ -268,14 +268,10 @@ public class HelloWorld {
         System.out.println("String parsed Date-Time: " + string);
 
 
-        //TODO: Annotations
-        //Annotations annotations = new Annotations();
 
-        //annotations.getAnnotationsByTypes();
-
-
-
-
+        // Annotations
+        // Please see Annotations.java
+        Annotations annotations = new Annotations();
 
     }
 }
