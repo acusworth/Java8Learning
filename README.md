@@ -18,8 +18,8 @@ To use Gradle:
 
 There are two tasks:
 
-- `gradle build` to generate the class files
-- `gradle run` to execute the main class
+- `make build` to generate the class files
+- `make run` to execute the main class
 
 To debug you must execute the HelloWorld Class, like so:
 
